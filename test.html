@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">get</button>
+	<div id="lrc"></div>
+	<script type="text/javascript" src="jk.js"></script>
+	<script type="text/javascript" scr="main.js"></script>
+	<script type="text/javascript">
+		var song = '海阔天空';
+		jk('#btn').click(function() {
+			jk().ajax({
+				url: 'http://geci.me/api/lyric/' + song,
+				type: 'GET',
+				success: function(data) {
+					jk().ajax({
+						url: data.result[0].lrc,
+						type: 'GET',
+						success: function(data) {
+							console.log(data);
+						},
+						// error status
+						error: function(err) { 
+						}
+					});
+				},
+				// error status
+				error: function(err) { 
+				}
+			});
+		})
+
+		function get_lrc(data) {
+			var request = new XMLHttpRequest();
+
+            var _data = data.data || null;
+
+            request.open(data.type, data.url);
+
+            if(!!data.header) { // 存在header则设置
+                request.setRequestHeader(data.header);
+            }
+
+            request.onreadystatechange = function() {
+                if(request.readyState === 4 && request.status === 200) {
+                    var type = request.getResponseHeader('Content-Type');
+                    if(type === 'application/json') {
+                        data.success(JSON.parse(request.responseText)); 
+                    } else {
+                        data.success(request.responseText);
+                        console.log('not json');
+                    }
+                } else{
+                    return request.status;
+                }
+            };
+            request.send(_data);
+		}
+	</script>
+</body>
+</html>
