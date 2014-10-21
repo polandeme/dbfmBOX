@@ -7,7 +7,8 @@
 
   "permissions": [
     "http://api.geci.me/",
-    "http://api.flickr.com/"
+    "http://api.flickr.com/",
+    "tabs"
   ],
   "browser_action": {
     "default_icon": "icon.png",
