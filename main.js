@@ -61,12 +61,12 @@ window.onload = function() {
                 var lrcBox = document.createElement('div');
                 var lrc = document.createTextNode(text);
                 lrcBox.appendChild(lrc);
-                document.getElementById("ad-click-area").innerHTML(lrcBox);
+                document.getElementById("ad-click-area").appendChild(lrcBox);
             }
         }
     // });
 } 
-window.setInterval(function() {
+window.setTimeout(function() {
 init()
-},1000);
+},3000);
 }
