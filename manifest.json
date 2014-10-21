@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "DouBan FM LRC",
+  "description": "show the LRC of DouBan FM on the browser",
+  "version": "1.0",
+
+  "permissions": [
+    "http://api.geci.me/",
+    "http://api.flickr.com/"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  }
+}

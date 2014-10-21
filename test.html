@@ -5,34 +5,10 @@
 	<title>Document</title>
 </head>
 <body>
-	<input id="song" palcehoder="song">
+	<input id="song" type ="text" value="dd">
 	<button id="btn">get</button>
 	<div id="lrc"></div>
 	<script type="text/javascript" src="jk.js"></script>
-	<script type="text/javascript" scr="main.js"></script>
-	<script type="text/javascript">
-		var song = jk('#song').text();
-		jk('#btn').click(function() {
-			jk().ajax({
-				url: 'http://geci.me/api/lyric/' + song,
-				type: 'GET',
-				success: function(data) {
-					jk().ajax({
-						url: data.result[0].lrc,
-						type: 'GET',
-						success: function(data) {
-							console.log(data);
-						},
-						// error status
-						error: function(err) { 
-						}
-					});
-				},
-				// error status
-				error: function(err) { 
-				}
-			});
-		})
-	</script>
+	<script type="text/javascript" src="main.js"></script>
 </body>
 </html>
