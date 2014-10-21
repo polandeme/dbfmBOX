@@ -6,10 +6,17 @@
   "version": "1.0",
 
   "permissions": [
-    "http://api.geci.me/",
+    "http://geci.me/api/",
     "http://api.flickr.com/",
-    "tabs"
+    "http://s.geci.me/",
+    "tabs",
+    "storage"
   ],
+  "content_scripts": [{
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["jk.js","main.js"],
+      "runat" : "document_end"  
+  }],
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
