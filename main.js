@@ -11,21 +11,21 @@ window.onload = function() {
 
 
     chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
+        console.log("res");
         if (msg.action == 'SendIt') {
             console.log('sendit get');
+            init();
+        } else {
+            console.log('res error');
         }
     });
     var init = function() {
          
-        var setInt = function() {
+        // var setInt = function() {
             if(window.location.href === 'http://douban.fm/') {
-                chrome.storage.onChanged.addListener(function(changes, namespace) {
-                       console.log("New item in storage",changes.visitedPages.newValue);
-                      });
                 
                 var song = window.localStorage.getItem('bubbler_song_info');
                 song = JSON.parse(song).song_name;
-                console.log("song name=" + song);
 
                 jk().ajax({
                         url: 'http://geci.me/api/lyric/' + song,
@@ -69,10 +69,10 @@ window.onload = function() {
                 }
 
             }
-        }
-        window.setInterval(function() {
-                setInt();
-            },2000);
+        // }
+        // window.setInterval(function() {
+        //         setInt();
+        //     },2000);
         
     };
     
@@ -81,3 +81,5 @@ window.onload = function() {
         init()
     }, 3000);
 }
+
+/*ajax before http://stackoverflow.com/questions/16463177/javascript-on-before-and-after-every-ajax-call*/

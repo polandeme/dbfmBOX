@@ -10,7 +10,6 @@
     "webRequest",
     "webRequestBlocking",
     "http://geci.me/api/",
-    "http://api.flickr.com/",
     "http://s.geci.me/",
      "http://*/*",
     // "https://*/*",
