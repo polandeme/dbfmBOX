@@ -10,19 +10,13 @@
 window.onload = function() {
 
 
+    chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
+        if (msg.action == 'SendIt') {
+            console.log('sendit get');
+        }
+    });
     var init = function() {
-         var time = window.localStorage.getItem('bubbler_song_info');
-            time = JSON.parse(time).timestamp;
-        date = new Date(time * 1000);
-        datevalues = [
-         date.getFullYear()
-        ,date.getMonth()+1
-        ,date.getDate()
-        ,date.getHours()
-        ,date.getMinutes()
-        ,date.getSeconds()
-     ];
-alert(datevalues); 
+         
         var setInt = function() {
             if(window.location.href === 'http://douban.fm/') {
                 chrome.storage.onChanged.addListener(function(changes, namespace) {
