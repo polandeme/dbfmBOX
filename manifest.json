@@ -3,15 +3,19 @@
 
   "name": "DouBan FM LRC",
   "description": "show the LRC of DouBan FM on the browser",
-  "version": "1.0",
+  "version": "1.1",
 
   "permissions": [
+    "storage",
     "http://geci.me/api/",
     "http://api.flickr.com/",
     "http://s.geci.me/",
-    "tabs",
-    "storage"
+    "tabs"
   ],
+  // "background": {
+  //   // 推荐
+  //   "persistent": true
+  // },
   "content_scripts": [{
       "matches": ["http://*/*", "https://*/*"],
       "js": ["jk.js","main.js"],

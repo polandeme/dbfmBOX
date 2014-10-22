@@ -1,6 +1,28 @@
+// if (window.addEventListener) {
+//   window.addEventListener("storage", handle_storage, false);
+// } else {
+//   window.attachEvent("onstorage", handle_storage);
+// };
+// function handle_storage(e) {
+//   if (!e) { e = window.event; }
+// console.log('dddd');
+// }
 window.onload = function() {
-    var init = function() {
 
+
+    var init = function() {
+         var time = window.localStorage.getItem('bubbler_song_info');
+            time = JSON.parse(time).timestamp;
+        date = new Date(time * 1000);
+        datevalues = [
+         date.getFullYear()
+        ,date.getMonth()+1
+        ,date.getDate()
+        ,date.getHours()
+        ,date.getMinutes()
+        ,date.getSeconds()
+     ];
+alert(datevalues); 
         var setInt = function() {
             if(window.location.href === 'http://douban.fm/') {
                 chrome.storage.onChanged.addListener(function(changes, namespace) {
@@ -10,6 +32,7 @@ window.onload = function() {
                 var song = window.localStorage.getItem('bubbler_song_info');
                 song = JSON.parse(song).song_name;
                 console.log("song name=" + song);
+
                 jk().ajax({
                         url: 'http://geci.me/api/lyric/' + song,
                         type: 'GET',
@@ -45,13 +68,12 @@ window.onload = function() {
                     var s = text.replace(/\[(.*)\]/g, '').trim();//去除返回数据的[]两端的内容，只保留歌词部分  
                     return s.replace(/\n/g, '\n<br />');//每行末尾输出html的换行符  
                 }
+
                 // 显示歌词在页面中
                 function write_lrc(text) {
-                    // var lrcBox = document.createElement('div');
-                        // lrcBox.id = 'lrcBox';
-                    // lrcBox.innerHTML = text;
                     document.getElementById("ft-ads-slot").innerHTML = "<div id='lrcBox'>" + text + "</div>";
                 }
+
             }
         }
         window.setInterval(function() {
