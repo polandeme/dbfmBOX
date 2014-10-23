@@ -26,18 +26,26 @@ window.onload = function() {
                 
                 var song = window.localStorage.getItem('bubbler_song_info');
                 song = JSON.parse(song).song_name;
-
+                var text = '';
                 jk().ajax({
                         url: 'http://geci.me/api/lyric/' + song,
                         type: 'GET',
+                        Async: false,
+                        wait: function() {
+                            write_lrc('wait...');
+                        },
                         success: function(data) {
                                 if(data.result.length > 0) {
                                     jk().ajax({
                                         url: data.result[0].lrc,
                                         type: 'GET',
+                                        Async: false,
+                                        wait: function() {
+                                            write_lrc('wait .......wait');
+                                        },
                                         success: function(data) {
                                             // console.log(data);
-                                            var text = encode_lrc(data);
+                                            text = encode_lrc(data);
                                             write_lrc(text);
                                             // jk('.ad-click-area').html(text);
                                         },
@@ -48,7 +56,7 @@ window.onload = function() {
                                     });
                                 } else {
                                     console.log('没有找到歌词');
-                                    var text = '没有找到歌词';
+                                    text = '没有找到歌词';
                                     write_lrc(text);
                                 }
                         },
@@ -69,10 +77,7 @@ window.onload = function() {
                 }
 
             }
-        // }
-        // window.setInterval(function() {
-        //         setInt();
-        //     },2000);
+       
         
     };
     

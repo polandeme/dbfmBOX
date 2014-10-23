@@ -1,6 +1,6 @@
 'use strict';
 console.log('ddd');
-chrome.webRequest.onCompleted.addListener( 
+chrome.webRequest.onResponseStarted.addListener( 
     function(details) { //status.code
 		// if(details.url.indexOf('http://mr4.douban.com/') !== -1) {
 			// chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tabs) {

@@ -112,6 +112,9 @@
         //     //     this.element[i].dom
         //     // }
         // },
+        value: function() {
+            
+        },
         css: function(obj) {
             var el = this.element;
             var obj_length = Object.getOwnPropertyNames(obj).length;
@@ -157,6 +160,14 @@
                 el[i].style.display = 'none';
             })
         },
+        /*
+         * To Do: input value 
+         * val() 可以设置，可以得到
+        */
+
+        val: function(value) {
+
+        },
         //scoll event
         // To Do: e.type 
         // _call_event: function(e) {
@@ -182,8 +193,11 @@
             if(!!data.header) { // 存在header则设置
                 request.setRequestHeader(data.header);
             }
-
+            // wait
             request.onreadystatechange = function() {
+
+                (!data.Async && data.wait()) || ''; 
+
                 if(request.readyState === 4 && request.status === 200) {
                     var type = request.getResponseHeader('Content-Type');
                     if(type === 'application/json') {
@@ -196,8 +210,7 @@
                     return request.status;
                 }
             };
-            request.send(_data);
-            return this;
+            request.send(_data, data.Async || true);
         }
 
     };
