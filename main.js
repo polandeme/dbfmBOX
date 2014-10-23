@@ -1,15 +1,4 @@
-// if (window.addEventListener) {
-//   window.addEventListener("storage", handle_storage, false);
-// } else {
-//   window.attachEvent("onstorage", handle_storage);
-// };
-// function handle_storage(e) {
-//   if (!e) { e = window.event; }
-// console.log('dddd');
-// }
 window.onload = function() {
-
-
     chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
         console.log("res");
         if (msg.action == 'SendIt') {
@@ -19,15 +8,20 @@ window.onload = function() {
             console.log('res error');
         }
     });
+    
     var init = function() {
 
             if(window.location.href === 'http://douban.fm/') {
                 
-                var song = window.localStorage.getItem('bubbler_song_info');
-                song = JSON.parse(song).song_name;
+                var _song_info = window.localStorage.getItem('bubbler_song_info');
+                song_info = JSON.parse(_song_info);
+
+                var song_name = song_info.song_name  // 歌曲名字
+                var artist = song_info.artist; // 歌手
                 var text = '';
+
                 jk().ajax({
-                        url: 'http://geci.me/api/lyric/' + song,
+                        url: 'http://geci.me/api/lyric/' + song_name,
                         type: 'GET',
                         Async: false,
                         wait: function() {
@@ -52,9 +46,10 @@ window.onload = function() {
                                         }
                                     });
                                 } else {
-                                    console.log('没有找到歌词');
-                                    text = '没有找到歌词';
-                                    write_lrc(text);
+                                    ajax_bd();
+                                    // console.log('没有找到歌词');
+                                    // text = '没有找到歌词';
+                                    // write_lrc(text);
                                 }
                         },
                         // error status
@@ -67,7 +62,63 @@ window.onload = function() {
                     var s = text.replace(/\[(.*)\]/g, '').trim();//去除返回数据的[]两端的内容，只保留歌词部分  
                     return s.replace(/\n/g, '\n<br />');//每行末尾输出html的换行符  
                 }
+
+                //请求百度歌词
+                function ajax_bd() {
+                    jk().ajax({
+                        url: 'http://mp3.baidu.com/dev/api/?tn=getinfo&ct=0&ie=utf-8&word='+ song_name +'&format=json',
+                        type: 'GET',
+                        Async: false,
+                        wait: function() {
+                            write_lrc('wait...');
+                        },
+                        success: function(data) {
+                                var data = JSON.parse(data);
+                               if(data.length > 0) {
+                                    var song_id = data[0].song_id;
+                                    jk().ajax({
+                                        url: 'http://ting.baidu.com/data/music/links?songIds=' + song_id,
+                                        type: 'GET',
+                                        Async: false,
+                                        wait: function() {
+                                            write_lrc('bd wait...');
+                                        },
+                                        success: function(data) {
+                                            var data = JSON.parse(data);
+                                            var lrcLink = data.data.songList[0].lrcLink;
+
+                                            if(lrcLink !== ''){
+                                                 jk().ajax({
+                                                    url: 'http://ting.baidu.com' + lrcLink,
+                                                    type: 'GET',
+                                                    Async: false,
+                                                    wait: function() {
+                                                        write_lrc('bd wait... wait');
+                                                    },
+                                                    success: function(data) {
+                                                        text = encode_lrc(data);
+                                                        write_lrc(text);
+                                                    }
+                                                });
+                                             } else {
+                                                text = 'bd lrc not found';
+                                             }
+                                           
+                                        }
+                                    });
+                               } else {
+                                    console.log('没有找到歌词');
+                                    text = '没有找到歌词';
+                                    write_lrc(text);
+                               }
+                        },
+                        // error status
+                        error: function(err) { 
+                        }
+                    });
+                }
                 //解码百度歌词  
+
                 function encode_bdlrc() {
 
 
@@ -78,8 +129,6 @@ window.onload = function() {
                 }
 
             }
-       
-        
     };
     
     // first open page

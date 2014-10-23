@@ -5,7 +5,7 @@ chrome.webRequest.onResponseStarted.addListener(
     function(details) { //status.code
 
 		console.log('url success');
-		chrome.tabs.query({url: "http://douban.fm/*"}, function(tabs) {
+		chrome.tabs.query({url: "http://douban.fm/*"}, function(tabs) {  //query 条件
 			chrome.tabs.sendMessage(tabs[0].id, {action: "SendIt"}, function(response) {
 
 			})
