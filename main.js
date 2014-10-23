@@ -20,8 +20,7 @@ window.onload = function() {
         }
     });
     var init = function() {
-         
-        // var setInt = function() {
+
             if(window.location.href === 'http://douban.fm/') {
                 
                 var song = window.localStorage.getItem('bubbler_song_info');
@@ -41,13 +40,11 @@ window.onload = function() {
                                         type: 'GET',
                                         Async: false,
                                         wait: function() {
-                                            write_lrc('wait .......wait');
+                                            write_lrc('wait...wait...');
                                         },
                                         success: function(data) {
-                                            // console.log(data);
                                             text = encode_lrc(data);
                                             write_lrc(text);
-                                            // jk('.ad-click-area').html(text);
                                         },
                                         // error status
                                         error: function(err) { 
@@ -70,7 +67,11 @@ window.onload = function() {
                     var s = text.replace(/\[(.*)\]/g, '').trim();//去除返回数据的[]两端的内容，只保留歌词部分  
                     return s.replace(/\n/g, '\n<br />');//每行末尾输出html的换行符  
                 }
+                //解码百度歌词  
+                function encode_bdlrc() {
 
+
+                }
                 // 显示歌词在页面中
                 function write_lrc(text) {
                     document.getElementById("ft-ads-slot").innerHTML = "<div id='lrcBox'>" + text + "</div>";

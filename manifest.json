@@ -17,6 +17,7 @@
   ],
   "background": {
     // 推荐
+    "persistent": true,
     "scripts": ["background.js"]
   },
   "content_scripts": [{
