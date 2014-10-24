@@ -9,20 +9,17 @@
 // }
 window.onload = function() {
 
+    // webrequest
+    // chrome.webRequest.onCompleted.addListener(function(info) {
+        // console.log("onCompleted" + info.url);
+
+    // },{
+        // urls: ['http://mr3.douban.com/*']
+    // }); 
+
+
 
     var init = function() {
-         var time = window.localStorage.getItem('bubbler_song_info');
-            time = JSON.parse(time).timestamp;
-        date = new Date(time * 1000);
-        datevalues = [
-         date.getFullYear()
-        ,date.getMonth()+1
-        ,date.getDate()
-        ,date.getHours()
-        ,date.getMinutes()
-        ,date.getSeconds()
-     ];
-alert(datevalues); 
         var setInt = function() {
             if(window.location.href === 'http://douban.fm/') {
                 chrome.storage.onChanged.addListener(function(changes, namespace) {
