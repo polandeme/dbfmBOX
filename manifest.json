@@ -18,7 +18,7 @@
   "background": {
     // 推荐
     "persistent": true,
-    "scripts": ["background.js"]
+    "scripts": ["background.js","style.js"]
   },
   "content_scripts": [{
       "matches": ["http://*/*", "https://*/*"],

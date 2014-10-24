@@ -1,0 +1,1 @@
+jk('#ad-click-area').remove();

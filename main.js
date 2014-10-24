@@ -21,7 +21,7 @@ window.onload = function() {
                 var text = '';
 
                 jk().ajax({
-                        url: 'http://geci.me/api/lyric/' + song_name,
+                        url: 'http://geci.me/api/lyric/'+ song_name,
                         type: 'GET',
                         Async: false,
                         wait: function() {
