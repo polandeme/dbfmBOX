@@ -18,11 +18,11 @@
   "background": {
     // 推荐
     "persistent": true,
-    "scripts": ["background.js","style.js"]
+    "scripts": ["background.js"]
   },
   "content_scripts": [{
       "matches": ["http://*/*", "https://*/*"],
-      "js": ["jk.js","main.js"],
+      "js": ["jk.js","main.js", "style.js"],
       "runat" : "document_end"  
   }],
   "browser_action": {

@@ -1,3 +1,7 @@
+// _ 私有变量
+// 驼峰变量命名
+// 下划线函数命名
+// 
 (function() {
     var jk = function(el) {
         return  new jk.prototype.init(el);
@@ -160,14 +164,16 @@
                 el[i].style.display = 'none';
             })
         },
-        /*
-         * To Do: input value 
-         * val() 可以设置，可以得到
-        */
-
-        val: function(value) {
-
+        // remove node 
+        remove: function() {
+            var el = this.element;
+            el.forEach(function(value, i) {
+                var parentNode = el[i].parentNode;
+                var oldNode = parentNode.removeChild(el[i]); 
+            });
+            return this;
         },
+        //To Do: index, eq method;
         //scoll event
         // To Do: e.type 
         // _call_event: function(e) {
@@ -196,7 +202,7 @@
             // wait
             request.onreadystatechange = function() {
 
-                (!data.Async && data.wait()) || ''; 
+                data.wait() || ''; 
 
                 if(request.readyState === 4 && request.status === 200) {
                     var type = request.getResponseHeader('Content-Type');
