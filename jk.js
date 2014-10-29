@@ -1,7 +1,7 @@
-// _ 私有变量
-// 驼峰变量命名
-// 下划线函数命名
-// 
+/* @命名  _ 私有变量 * 驼峰变量命名 * 下划线函数命名 * 末尾 _A数组
+ * 
+ */ 
+
 (function() {
     var jk = function(el) {
         return  new jk.prototype.init(el);
@@ -167,12 +167,20 @@
         // remove node 
         remove: function() {
             var el = this.element;
+            var oldNode_A = [];
+            var parentNode, oldNode;
             el.forEach(function(value, i) {
-                var parentNode = el[i].parentNode;
-                var oldNode = parentNode.removeChild(el[i]); 
+                parentNode = el[i].parentNode;
+                oldNode = parentNode.removeChild(el[i]); 
+                oldNode_A.push(el[i]);
             });
-            return this;
+            return oldNode_A;
         },
+
+        // get the index of array
+        index: function() {
+            var el = this.element;
+       },
         //To Do: index, eq method;
         //scoll event
         // To Do: e.type 

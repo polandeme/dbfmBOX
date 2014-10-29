@@ -9,14 +9,15 @@
     "storage",
     "webRequest",
     "webRequestBlocking",
-    "http://geci.me/api/",
-    "http://s.geci.me/",
+    // "http://geci.me/api/",
+    // "http://s.geci.me/",
      "http://*/*",
-    // "https://*/*",
+    "https://*/*",
     "tabs"
   ],
   "background": {
     // 推荐
+
     "persistent": true,
     "scripts": ["background.js"]
   },
@@ -28,5 +29,9 @@
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
+  },
+  "icons" : {
+    "48" : "icon-48.png",
+    "128" : "icon-128.png"
   }
 }
