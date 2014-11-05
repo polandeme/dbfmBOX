@@ -9,8 +9,6 @@
     "storage",
     "webRequest",
     "webRequestBlocking",
-    // "http://geci.me/api/",
-    // "http://s.geci.me/",
      "http://*/*",
     "https://*/*",
     "tabs"
