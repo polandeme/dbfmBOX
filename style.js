@@ -23,10 +23,13 @@ var firstNode = document.getElementById("fm-header");
 targetNode.insertBefore(menuNode, firstNode);
 
 
-var cnameBtn = "<button class='po-cname-btn'>" + cname.eq(0).text() + "</button>";;
-for(var i = 1; i < cname.length; i++){
+var cnameBtn = "<button class='po-cname-btn'>" + cname.eq(0).text().substring(2, cname.eq(0).text().length) + "</button>";;
+for(var i = 1; i < cname.length - 2; i++){
+	var str = cname.eq(i).text();
+	console.log(str);
+	str = str.indexOf("MHz") !== -1 ? str.substring(0, str.length-3) : str.substring(2, str.length);
 	cnameBtn += "<button class='po-cname-btn'>" +
-				cname.eq(i).text() + "</button>"; 
+				str + "</button>"; 
 }
 menuNode.innerHTML = cnameBtn;
                     
@@ -47,13 +50,13 @@ jk(".ch-list-wrapper").css({'width': 0, 'margin': 0, 'padding': 0, 'min-height':
 $(document).on('click', '.po-cname-btn', function() {
 	var index = $(this).index();
 
-	console.log(chl_name[index]);
+	console.log(chl_name.eq(index).text());
 	chl_name[index].click();//trigger('click');
 	console.log('-----------');
-	// chl_name.eq(2).trigger('click');
 
 })
 console.log();
+$(".pro-promo, 	#fm-section2").remove();
 /*$("#po-cname-btn").click(function() {
 	console.log(index);
 	$('.channel_list li').eq(index).trigger('click');
