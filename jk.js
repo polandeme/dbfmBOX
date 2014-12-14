@@ -230,6 +230,6 @@
     };
     jk.prototype.init.prototype = jk.prototype;
 
-    window.$ = window.jk = jk;
+    window.$$ = window.jk = jk;
 })();
 

@@ -126,7 +126,7 @@ window.onload = function() {
                 // 显示歌词在页面中
                 function write_lrc(text) {
                     document.getElementById("ft-ads-slot").innerHTML = "<div id='lrcBox'>" + text + "</div>";
-                    jk('#lrcBox').css({'marginTop': '180px', 
+                    jk('#lrcBox').css({'marginTop': '30px', 
                        'marginLeft': '215px',
                        'float': 'left'
                     });
