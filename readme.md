@@ -1,8 +1,8 @@
 ###显示豆瓣歌词的chrome 扩展  
 	
-	<img src="img/home.png" alt="" />
-	<img src="img/menu.png" alt="" />
-	<img src="img/yyy.gif" alt="" />
+	![界面](https://raw.githubusercontent.com/polandeme/dbfmBOX/master/img/home.png)  
+	![菜单](https://raw.githubusercontent.com/polandeme/dbfmBOX/master/img/menu.png)
+	![安装](https://raw.githubusercontent.com/polandeme/dbfmBOX/master/img/yyy.gif)
 ### 目前功能 
 - 显示当前播放歌词
 - 选择赫兹频道
