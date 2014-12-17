@@ -1,7 +1,9 @@
 ###显示豆瓣歌词的chrome 扩展  
 	
 	![界面](/img/home.png)  
+
 	![菜单](/img/menu.png)
+	
 	![安装](/img/yyy.gif)
 ### 目前功能 
 - 显示当前播放歌词
