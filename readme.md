@@ -1,7 +1,10 @@
 ###显示豆瓣歌词的chrome 扩展  
-	
+
+显示歌词  
 ![home](img/home.png)  
-![menu](img/menu.png)  
+选择赫兹  
+![menu](img/menu.png)   
+安装插件   
 ![yyy](img/yyy.gif)  
 
 ### 目前功能 
