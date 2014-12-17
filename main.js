@@ -38,6 +38,9 @@ window.onload = function() {
                                         },
                                         success: function(data) {
                                             text = encode_lrc(data);
+
+                                            window.localStorage.setItem('data', text)
+
                                             write_lrc(text);
                                         },
                                         // error status
@@ -97,6 +100,9 @@ window.onload = function() {
                                                     },
                                                     success: function(data) {
                                                         text = encode_lrc(data);
+                                                        
+                                                        window.localStorage.setItem('data', text)
+
                                                         write_lrc(text);
                                                     }
                                                 });
@@ -128,6 +134,9 @@ window.onload = function() {
                     document.getElementById("ft-ads-slot").innerHTML = "<div id='lrcBox'>" + text + "</div>";
                     jk('#lrcBox').css({'marginTop': '30px', 
                        'marginLeft': '215px',
+                       'height': '560px',
+                       'overflow': 'auto',
+                       'border': '1px solid gray',
                        'float': 'left'
                     });
                 }

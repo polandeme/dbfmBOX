@@ -20,8 +20,8 @@
     "scripts": ["background.js"]
   },
   "content_scripts": [{
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["jk.js", "jquery-1.11.1.js", "main.js", "style.js"],
+      "matches": ["http://douban.fm/*", "https://douban.fm/*"],
+      "js": ["jk.js", "jquery-1.11.1.js", "main.js", "style.js", "canvas.js"],
       "runat" : "document_end"  
   }],
   "browser_action": {
