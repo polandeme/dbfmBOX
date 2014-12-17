@@ -1,10 +1,8 @@
 ###显示豆瓣歌词的chrome 扩展  
 	
-	![界面](/img/home.png)  
-
-	![菜单](/img/menu.png)
-	
-	![安装](/img/yyy.gif)
+	<img src="img/home.png" alt="" />
+	<img src="img/menu.png" alt="" />
+	<img src="img/yyy.gif" alt="" />
 ### 目前功能 
 - 显示当前播放歌词
 - 选择赫兹频道
