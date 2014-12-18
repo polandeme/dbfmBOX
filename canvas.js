@@ -178,9 +178,9 @@
 
   // write words 
   function w_words(x, y, data) {
-    var lData = localStorage.getItem('data').split('<br/>');
+    var lData = localStorage.getItem('data').split('<br />');
     var data = data ? data.data : lData;
-    console.log(data);
+    console.log(lData);
     var i = Math.round(Math.random() * data.length);
     ctx.fillStyle = 'blue';
     ctx.fillText(data[cp_index % data.length], x + 5, y - 5);
@@ -209,6 +209,7 @@ $('body').css(
 $('body').on('click', '.clearCanvas', function() {
         window.cancelAnimationFrame(reId); 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    $("#fm-channel-list").css('z-index', 0);
 });
 
 })();

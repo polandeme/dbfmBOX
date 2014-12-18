@@ -68,8 +68,8 @@ jk(".ch-list-wrapper").css({'width': 0, 'margin': 0, 'padding': 0, 'min-height':
 $('#fm-section').css('min-height', '0');
 
 $(".po-hz-menu").css({"margin-left": "-190"});
-
-$("#user_info").css('margin-top','-35px')
+$("#fm-channel-list").css('z-index', -999);
+$("#user_info").css('margin-top','-35px');
 $(document).on('click', '.po-other-hz li', function() {
 	var index = $(this).index();
 	chl_name[index].click();//trigger('click');
@@ -102,7 +102,7 @@ $(".pro-promo, 	#fm-section2").remove();
 		'margin-top': '3px',
 		'text-align': 'center',
 		'line-height': '30px',
-		'background': 'blue',
+		// 'background': 'blue',
 		'list-style-type': 'none'
 	});
 
@@ -115,6 +115,7 @@ $(".pro-promo, 	#fm-section2").remove();
 
 	$(".po-menu").mouseleave(function() {
 		$(".po-other-hz").hide();
+		$("#user_info").css('margin-top','-35px');
 	});
 	$(".po-other-hz li").click(function(){
 		var current_play_text = $(".po-current-play").text();
@@ -131,4 +132,17 @@ $(".pro-promo, 	#fm-section2").remove();
 		var downloadUrl = 'http://mr3.douban.com/201412172352/0d27ab769a9c90d3ea60de30b45aa001/view/song/small/p' + id + '.mp4'
 	}
 	downloadMusicFile();
+
+
+	//insert style
+	 function addStyle(stylePath) {
+                var container = document.getElementsByTagName("head")[0];
+                var addStyle = document.createElement("link");
+                addStyle.rel = "stylesheet";
+                addStyle.type = "text/css";
+                addStyle.media = "screen";
+                addStyle.href = stylePath;
+                container.appendChild(addStyle);
+            }
+            addStyle('style.css');
 });

@@ -22,6 +22,7 @@
   "content_scripts": [{
       "matches": ["http://douban.fm/*", "https://douban.fm/*"],
       "js": ["jk.js", "jquery-1.11.1.js", "main.js", "style.js", "canvas.js"],
+      "css": ["style.css"],
       "runat" : "document_end"  
   }],
   "browser_action": {
